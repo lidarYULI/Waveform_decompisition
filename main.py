@@ -1,18 +1,19 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
 import pandas as pd
 import numpy as np
 import gaussian_decomposition as GD_decom
 import exgaussian_decomposition as exGD_decom
 import matplotlib.pyplot as plt
 import model_usage
+import os
 import matplotlib
 matplotlib.use('TkAgg')
 def test_gaussia_decomposition():
 
-    test_excel = r'D:\2-forest_reflectance_result\1-NEON_Six_Sites_GEDI_Product\Gaussian_test\test_data.xlsx'
+    current_file_path = os.path.abspath(__file__)
+
+    project_root = os.path.dirname(current_file_path)
+
+    test_excel = os.path.join(project_root,'test_data.xlsx')
 
     dataframe = pd.read_excel(test_excel, dtype={'shot_number': str}, index_col=0)
 
@@ -27,6 +28,7 @@ def test_gaussia_decomposition():
     searching_waveform, noise_std = GD_decom.get_smooth_waveform(rx_waveform_value, search_start, search_end)
 
     times_noise = 3
+
     stop_threshold = times_noise * noise_std
 
     #fitted_parameters = exGD_decom.waveform_decompose_exgaussian(searching_waveform, stop_threshold, sigma, gamma)
@@ -40,7 +42,7 @@ def test_gaussia_decomposition():
     draw_Gaussian_fitted_modes(lmfit_ax, fitted_parameters, len(searching_waveform))
     ########
     lmfit_ax.axvline(rx_parameters['zcross'] - rx_parameters['search_start'], label='ground', c='red')
-    lmfit_ax.legend(block=True)
+    lmfit_ax.legend()
     plt.show()
 def draw_Gaussian_fitted_modes(ax, fitted_parameters, length):
     x = np.arange(length)
@@ -52,7 +54,7 @@ def draw_Gaussian_fitted_modes(ax, fitted_parameters, length):
         fit_y = model_usage.gaussian(x, amplitude, center, sigma)
         sum_y = sum_y + fit_y
         i = i + 1
-        ax.plot(x, fit_y, linestyle='--', label=f'Gaussian_moed_{i}')
+        ax.plot(x, fit_y, linestyle='--', label=f'Gaussian_mode_{i}')
 
     ax.plot(x, sum_y, c='orange', label='fitted waveform', zorder=0)
 
