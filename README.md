@@ -14,7 +14,8 @@ Usage:
 I provide a test_data.xlsx, it includes waveforms and some fields derived from GEDI products
 download this repository, run main.py;  you will see a fig of decomposition result; below is the test function
 
-![result](https://github.com/lidarYULI/Waveform_decompisition/main/example.png)
+![result](https://github.com/lidarYULI/Waveform_decompisition/blob/master/example.png)
+
 
 def test_gaussia_decomposition():
 
