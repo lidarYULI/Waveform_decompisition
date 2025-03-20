@@ -21,16 +21,25 @@ Refer to "Hofton M & Blair J B (2019). Algorithm Theoretical Basis Document (ATB
 Usage for Gaussian decomposition:
 
 I provide a test_data.xlsx, it includes waveforms and some fields derived from GEDI products;
-The description of some columns may be helpful for my collaborators
-"rxwaveform": GEDI received waveform
-"txwaveform": GEDI transimitted waveform
+
+The description of some columns may be helpful for my collaborators;
+
+"rxwaveform": GEDI received waveform; "txwaveform": GEDI transimitted waveform
+
 "zcross": ground return mode location (bins) provided by GEDI product
+
 "zcross_manually": visually selected ground return mode location (bins) in our manuscript
+
 "GEDI_lowestmode_height_NAVD": GEDI elevation reported in the North American Vertical Datum 1988 (NAVD88) used in NEON ALS points cloud.
-"DEM_NEON": the average of NEON ALS elevation within the GEDI footprint area
+
+"DEM_NEON": the average of NEON ALS elevation within the GEDI footprint area;
+
 "DHM_98_c": 98th percentile canopy height derived from ALS points cloud
-"t_x" and "t_y": coordinates under UTM projection
+
+"t_x" and "t_y": coordinates under UTM projection; 
+
 "ALS_total_CC" and "GEDI_total_CC": canopy cover derived from ALS and GEDI
+
 "selected_l2a_algorithm": the preprocessing algorithm ID used for each waveform
 
 download this repository, run test_gaussia_decomposition() in main.py.
