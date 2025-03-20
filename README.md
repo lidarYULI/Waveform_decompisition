@@ -13,8 +13,11 @@ Here is the GEDI waveform labeled by some key parameters derived from GEDI prepr
 ![result](https://github.com/lidarYULI/Waveform_decompisition/blob/master/result_output/waveform_info.png)
 
 "search_start" and "search_end" define the waveform range where reflected signal is searched by algorithm
+
 "toploc": the highest detectable return
+
 "botloc": the lowest detectable signal return
+
 Refer to "Hofton M & Blair J B (2019). Algorithm Theoretical Basis Document (ATBD) for GEDI Transmit and Receive Waveform Processing for L1 and L2 Products. In"
 
 
