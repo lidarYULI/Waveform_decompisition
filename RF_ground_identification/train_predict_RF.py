@@ -7,7 +7,7 @@ import os
 from sklearn.model_selection import train_test_split
 import derivative_samples
 from pathlib import Path
-from gaussian_samples import file_path
+from files_access import file_path
 
 def train_by_elevation_samples():
     # using elevation derived samples
@@ -17,9 +17,9 @@ def train_by_elevation_samples():
 
     result_folder = os.path.join(project_root, 'result_output')
 
-    sample_excel = os.path.join(result_folder, 'elevation_train', 'random_selection_samples.xlsx')
+    sample_excel = os.path.join(result_folder, 'trainning_ALSsamples', 'random_selection_samples.xlsx')
 
-    save_folder = os.path.join(result_folder, 'elevation_train')
+    save_folder = os.path.join(result_folder, 'trainning_ALSsamples')
 
     train_by_different_site(sample_excel,save_folder)
 
@@ -31,9 +31,9 @@ def train_by_manual_samples():
 
     result_folder = os.path.join(project_root, 'result_output')
 
-    sample_excel = os.path.join(result_folder, 'visual_train', 'manual_selection_samples.xlsx')
+    sample_excel = os.path.join(result_folder, 'training_visualsamples', 'manual_selection_samples.xlsx')
 
-    save_folder = os.path.join(result_folder, 'visual_train')
+    save_folder = os.path.join(result_folder, 'training_visualsamples')
 
     train_by_different_site(sample_excel, save_folder)
 
@@ -199,7 +199,7 @@ def RF_predict_bysite(RF_excel,model_folder):
 
     RF_dataframe.to_excel(RF_excel)
 
-# this method is good and finally used in my dissertation
+# this method is good and used in my dissertation
 def predict_based_on_dataframe(Dataframe,index,RF_model):
 
     sample_fetures_dataframes = get_samples_RF_dataframe(Dataframe,index)
@@ -262,10 +262,10 @@ if __name__ == '__main__':
 
     train_by_elevation_samples()
 
-    # train_by_manual_samples()
+    train_by_manual_samples()
 
-    # RF_excel = file_path.RF_excel
+    RF_excel = file_path.RF_excel
 
-    # model_folder = file_path.elevation_train
+    model_folder = file_path.elevation_train
 
-    # RF_predict_bysite(RF_excel, model_folder)
+    RF_predict_bysite(RF_excel, model_folder)

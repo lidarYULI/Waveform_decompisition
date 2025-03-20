@@ -1,0 +1,42 @@
+Random Forest Model Parameters:
+bootstrap: True
+ccp_alpha: 0.0
+class_weight: None
+criterion: gini
+max_depth: None
+max_features: sqrt
+max_leaf_nodes: None
+max_samples: None
+min_impurity_decrease: 0.0
+min_samples_leaf: 1
+min_samples_split: 6
+min_weight_fraction_leaf: 0.0
+monotonic_cst: None
+n_estimators: 200
+n_jobs: None
+oob_score: False
+random_state: 42
+verbose: 0
+warm_start: False
+feature importance:
+2_distance_to_start: 0.0534
+3_distance_to_end: 0.1342
+4_distance_ratio: 0.1279
+5_mode_amplitude: 0.1300
+6_mode_duration: 0.0400
+7_ma1: 0.0379
+8_ma2: 0.0384
+9_ma3: 0.0432
+10_ma4: 0.0323
+11_ma5: 0.0306
+12_percentile_amp: 0.1293
+13_cumulative_ratio: 0.0851
+14_stddev: 0.0146
+15_per_25: 0.0147
+16_per_50: 0.0159
+17_per_75: 0.0164
+18_cumu_25_index: 0.0144
+19_cumu_50_index: 0.0198
+20_cumu_75_index: 0.0219
+
+Model Accuracy: 0.9153

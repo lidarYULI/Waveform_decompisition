@@ -6,7 +6,7 @@ class file_path:
 
     project_root = os.path.dirname(current_file_path)
 
-    # excel, all GEDI records used in this file; for results derivation and RF prediction
+    # excel, all GEDI records used in this file; for RF prediction and getting reuslts
     RF_excel = os.path.join(project_root, '7_RF_comparison.xlsx')
 
     # excel, the same as below
@@ -26,7 +26,7 @@ class file_path:
     ### RF work directory
 
     # RF training by the samples generated based on ALS elevation
-    elevation_train = os.path.join(project_root, 'result_output', 'elevation_train')
+    elevation_train = os.path.join(project_root, 'result_output', 'trainning_ALSsamples')
 
     # RF training by the samples generated based on manual selection of ground location
-    manually_train = os.path.join(project_root, 'result_output', 'visual_train')
+    manually_train = os.path.join(project_root, 'result_output', 'training_visualsamples')

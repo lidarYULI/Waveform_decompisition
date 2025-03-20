@@ -1,11 +1,9 @@
 import numpy as np
-import model_usage
 import pandas as pd
-from scipy.signal import argrelextrema
-from files_access import file_path
 import GEDI_waveform_processing as GEDI_processing
 import model_usage
 from scipy.optimize import least_squares
+from files_access import file_path
 
 # # get the fitted waveform based on exgaussian decomposed parameters
 def fitted_waveform_exgaussian(parameters,waveform_length):
@@ -175,3 +173,8 @@ def cumulative_CC_without_fit(waveform, Rg, rg_center, toploc):
         CC = RV_z / (RV + 1.5 * Rg)
         CC_list.append(CC)
         return Rv_list, CC_list
+
+if __name__ == '__main__':
+
+    RF_excel = file_path.RF_excel
+    decompose_based_selected_zcross(RF_excel,'randomforest_zcross')

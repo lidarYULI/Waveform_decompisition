@@ -125,7 +125,7 @@ def ground_fit_exgaussian(normalized_waveform,select_zcross,sigma,gamma):
 def ground_fit_Gau(self,normalized_waveform,select_zcross,sigma):
 
     ground_amplitude = normalized_waveform[select_zcross]
-
+    # below boundary setting is set by many times of trail;
     lp_bounds = [ground_amplitude*0.9, select_zcross - 3, sigma * 0.5]
 
     up_bounds = [ground_amplitude*1.2, select_zcross + 3, sigma * 3]
