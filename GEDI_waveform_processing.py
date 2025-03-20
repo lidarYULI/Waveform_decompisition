@@ -46,3 +46,20 @@ def rx_waveform_denoise(rx_waveform, search_start, search_end, algorithm_id):
 
     return smoothed_rxwaveform
 
+###### unused function, take 5 samples in waveform
+def sampling_waveform(valid_waveform):
+
+    indices = np.linspace(0, len(valid_waveform)-1, 5, dtype=int)
+    sampled_data = valid_waveform[indices]
+
+    return indices,sampled_data
+
+def is_powerbeams_byname(beamName):
+    # coverage beams
+    if beamName in ['BEAM0000','BEAM0001','BEAM0010','BEAM0011']:
+        return 0
+
+    # power beams
+    if beamName in ['BEAM0101','BEAM0110','BEAM1000','BEAM1011']:
+        return 1
+###### unused function

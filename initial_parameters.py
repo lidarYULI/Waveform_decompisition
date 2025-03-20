@@ -212,25 +212,26 @@ def inflection_points(waveform):
 # I consider the center's value between two nearby inflections on both side should be at least larger than one of them
 # if not, an inflection may exist alone. this inflection can not be used to calculate sigma in Gaussian component
 def filter_inflection(x_inflection,y_inflection,y):
-        if len(x_inflection)%2 == 0:
-            return x_inflection,y_inflection
-        # judge the wrong inflection points
-        i = 0
-        x_inflection_copy = x_inflection.copy()
-        y_copy = y.copy()
 
-        while i < len(x_inflection_copy) - 1:
-            inflection_left = x_inflection_copy[i]
-            inflection_right = x_inflection_copy[i + 1]
-            x_center = (inflection_left + inflection_right) / 2
-            y_center = y_copy[int(x_center)]
-            if (y_center <= y_copy[int(inflection_left)]) | (y_center <= y_copy[int(inflection_right)]):
-                x_inflection = x_inflection[x_inflection!=inflection_left]
-                y_inflection = y_inflection[y_inflection!=y_copy[int(inflection_left)]]
-                i = i + 1
-            else:
-                i = i + 2
+    if len(x_inflection)%2 == 0:
         return x_inflection,y_inflection
+    # judge the wrong inflection points
+    i = 0
+    x_inflection_copy = x_inflection.copy()
+    y_copy = y.copy()
+
+    while i < len(x_inflection_copy) - 1:
+        inflection_left = x_inflection_copy[i]
+        inflection_right = x_inflection_copy[i + 1]
+        x_center = (inflection_left + inflection_right) / 2
+        y_center = y_copy[int(x_center)]
+        if (y_center <= y_copy[int(inflection_left)]) | (y_center <= y_copy[int(inflection_right)]):
+            x_inflection = x_inflection[x_inflection!=inflection_left]
+            y_inflection = y_inflection[y_inflection!=y_copy[int(inflection_left)]]
+            i = i + 1
+        else:
+            i = i + 2
+    return x_inflection,y_inflection
 
 # add initial sigma for derivation initial Gaussian parameters
 # the sigma is calculated by the distance between two inflection around the center

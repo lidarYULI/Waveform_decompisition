@@ -6,54 +6,40 @@ Two kinds of models were developed to fit the GEDI waveform.
 The first fits all component waveforms using a Gaussian function (Gaussian decomposition). 
 The second additionally uses an extended Gaussian function specifically for ground return fitting, as in the GEDI L2B product. However, the second model may not fully follow GEDI's practices because I do not know whether GEDI directly fits the ground return mode (located at the lowest peak of the waveform) using an extended Gaussian function or if they first perform Gaussian decomposition and then further fit the lowest component result using an extended Gaussian function. In my code, I replaced the Gaussian function with an extended Gaussian function to fit the lowest mode. Apart from this, all details are the same as in the Gaussian decomposition.
 
-
 This is a preliminary version.
 
-Usage:
+Here is the GEDI waveform labeled by some key parameters derived from GEDI preprocessing algorithm 2
 
-I provide a test_data.xlsx, it includes waveforms and some fields derived from GEDI products
-download this repository, run main.py;  you will see a fig of decomposition result; below is the test function
+![result](https://github.com/lidarYULI/Waveform_decompisition/blob/master/result_output/waveform_info.png)
 
-![result](https://github.com/lidarYULI/Waveform_decompisition/blob/master/example.png)
+"search_start" and "search_end" define the waveform range where reflected signal is searched by algorithm
+"toploc": the highest detectable return
+"botloc": the lowest detectable signal return
+Refer to "Hofton M & Blair J B (2019). Algorithm Theoretical Basis Document (ATBD) for GEDI Transmit and Receive Waveform Processing for L1 and L2 Products. In"
 
 
-def test_gaussia_decomposition():
+Usage for Gaussian decomposition:
 
-    current_file_path = os.path.abspath(__file__)
+I provide a test_data.xlsx, it includes waveforms and some fields derived from GEDI products;
+The description of some columns may be helpful for my collaborators
+"rxwaveform": GEDI received waveform
+"txwaveform": GEDI transimitted waveform
+"zcross": ground return mode location (bins) provided by GEDI product
+"zcross_manually": visually selected ground return mode location (bins) in our manuscript
+"GEDI_lowestmode_height_NAVD": GEDI elevation reported in the North American Vertical Datum 1988 (NAVD88) used in NEON ALS points cloud.
+"DEM_NEON": the average of NEON ALS elevation within the GEDI footprint area
+"DHM_98_c": 98th percentile canopy height derived from ALS points cloud
+"t_x" and "t_y": coordinates under UTM projection
+"ALS_total_CC" and "GEDI_total_CC": canopy cover derived from ALS and GEDI
+"selected_l2a_algorithm": the preprocessing algorithm ID used for each waveform
 
-    project_root = os.path.dirname(current_file_path)
+download this repository, run test_gaussia_decomposition() in main.py.
+you will see a fig of decomposition result; below is the test function
 
-    test_excel = os.path.join(project_root,'test_data.xlsx')
+![result](https://github.com/lidarYULI/Waveform_decompisition/blob/master/result_output/gau_decompistion.png)
 
-    dataframe = pd.read_excel(test_excel, dtype={'shot_number': str}, index_col=0)
 
-    shot_number = '79650300200248910'
 
-    tx_parameters, rx_parameters = GEDI_waveform_parameters(dataframe, dataframe,shot_number)
-
-    rx_waveform_value = rx_parameters['rx_waveform']
-
-    stddev, gamma, sigma, search_start, search_end = dataframe.loc[shot_number, ['stddev', 'tx_eggamma', 'tx_egsigma', 'search_start', 'search_end']]
-
-    searching_waveform, noise_std = GD_decom.get_smooth_waveform(rx_waveform_value, search_start, search_end)
-
-    times_noise = 3
-
-    stop_threshold = times_noise * noise_std
-
-    #fitted_parameters = exGD_decom.waveform_decompose_exgaussian(searching_waveform, stop_threshold, sigma, gamma)
-
-    fitted_parameters = GD_decom.waveform_decompose_gaussian(searching_waveform, stop_threshold, sigma)
-
-    lmfit_fig, lmfit_ax = plt.subplots(figsize=(10, 6))
-
-    lmfit_ax.plot(range(len(searching_waveform)), searching_waveform, c='gray', label='searching waveform',linewidth=0.5)
-
-    draw_Gaussian_fitted_modes(lmfit_ax, fitted_parameters, len(searching_waveform))
-    ########
-    lmfit_ax.axvline(rx_parameters['zcross'] - rx_parameters['search_start'], label='ground', c='red')
-    lmfit_ax.legend()
-    plt.show()
 
 
 

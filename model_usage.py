@@ -1,7 +1,8 @@
 import numpy as np
 from scipy.special import erfc
 from lmfit import Model
-
+from scipy.optimize import least_squares
+from scipy.optimize import curve_fit
 # define the modeling function
 def gaussian(x, amplitude, center, sigma):
     return amplitude * np.exp(-(x - center) ** 2 / (2 * sigma ** 2))
@@ -88,3 +89,64 @@ def ex_gaussian(x, amplitude, center, sigma, gamma):
     input_to_exp = np.clip(input_to_exp, -700, 700)
     exponential_part = np.exp(input_to_exp)
     return amplitude * gamma * 2 * exponential_part * erfca
+
+
+# fit ground return based on extended Gaussian function
+def ground_fit_exgaussian(normalized_waveform,select_zcross,sigma,gamma):
+
+    def cost_effective(params, x, y_obser):
+        # return (np.sum((model(params,x) - y_obser)/noise_std))**2
+        amplitude, center, sigma, gamma = params
+        return (ex_gaussian(x,amplitude, center, sigma, gamma) - y_obser) **2
+
+    ground_amplitude = normalized_waveform[select_zcross]
+
+    # fit_amplitude = ground_amplitude,
+    fit_amplitude = calculate_ex_initial_amplitude(ground_amplitude,select_zcross,sigma,gamma)
+
+     # below boundary setting is set by many times of trail;
+    lp_bounds = [0, select_zcross - 4, sigma * 0.8, gamma * 0.98]
+    up_bounds = [np.inf, select_zcross + 4, sigma * 10, gamma * 1] #gamma * 1.05
+
+    # transect_waveform is also unknown; set arbitrarily
+    transect_wavefrm = normalized_waveform[select_zcross + 4:select_zcross + 20]
+
+    x = np.arange(select_zcross + 4, select_zcross + 4 + len(transect_wavefrm), 1)
+
+    initial_paras = np.array([fit_amplitude, select_zcross, sigma, gamma])
+
+    result = least_squares(cost_effective, initial_paras, args=(x, transect_wavefrm), method='trf',bounds=(lp_bounds, up_bounds))
+
+    fitted_parameters = result.x
+
+    return fitted_parameters
+
+# fit ground return based on Gaussian function
+def ground_fit_Gau(self,normalized_waveform,select_zcross,sigma):
+
+    ground_amplitude = normalized_waveform[select_zcross]
+
+    lp_bounds = [ground_amplitude*0.9, select_zcross - 3, sigma * 0.5]
+
+    up_bounds = [ground_amplitude*1.2, select_zcross + 3, sigma * 3]
+
+    # transect_wavefrm = normalized_waveform[fit_start:fit_end]
+    #
+    # x = np.arange(fit_start, fit_start + len(transect_wavefrm), 1)
+    transect_wavefrm = normalized_waveform[select_zcross - 12:select_zcross + 12]
+
+    x = np.arange(select_zcross - 12, select_zcross - 12 + len(transect_wavefrm), 1)
+
+    initial_paras = [ground_amplitude, select_zcross, sigma]
+
+    popt, pcov = curve_fit(gaussian, x, transect_wavefrm, p0=initial_paras, bounds=[lp_bounds, up_bounds])
+
+    return popt
+
+
+def calculate_ex_initial_amplitude(y,center,sigma,gamma):
+    erfca = erfc((center + gamma * (sigma ** 2) - center) / (np.sqrt(2) * sigma))  # 计算误差函数部分
+    input_to_exp = gamma * (center - center + gamma * sigma ** 2 / 2)
+    exponential_part = np.exp(input_to_exp)
+    amplitude = y/ (gamma * 2 * exponential_part * erfca)
+    return amplitude

@@ -25,13 +25,10 @@ def waveform_decompose_gaussian(valid_waveform, stddev, sigma,points='derivative
 
     return fitted_parameters
 
-    # this decomposition method is for WRD process
 
 def LM_fitted(y, init_modes, noise_std, method='trf'):
 
-    # generate the bound
     x = np.arange(0, len(y))
-    # get flatten parameters and its boundary
     result = 0
     important_mode = np.empty((0,3))
     for i in range(len(init_modes)):
@@ -45,7 +42,7 @@ def LM_fitted(y, init_modes, noise_std, method='trf'):
         fitted_parameters = result.x
         residual_mean = np.mean((y - model_usage.model_Gaussian(x,fitted_parameters)) ** 2)
         square_root = np.sqrt(residual_mean)
-        if square_root < 2 * noise_std:
+        if square_root < noise_std:
             return result
     return result
 
