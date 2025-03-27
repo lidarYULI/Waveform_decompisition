@@ -20,7 +20,7 @@ def test_gaussia_decomposition():
 
     shot_number = '79650300200248910'
 
-    waveform_parameters = GEDI_waveform_parameters(dataframe, dataframe,shot_number)
+    waveform_parameters = GEDI_waveform_parameters(dataframe,shot_number)
 
     rx_waveform_value = waveform_parameters['rx_waveform']
 
@@ -60,17 +60,17 @@ def draw_Gaussian_fitted_modes(ax, fitted_parameters, length):
 
     ax.plot(x, sum_y, c='orange', label='fitted waveform', zorder=0)
 
-def GEDI_waveform_parameters(comparison_DataFrame,process_field_DataFrame,shot_number):
+def GEDI_waveform_parameters(dataframe,shot_number):
 
-    tx_waveform_str = comparison_DataFrame.loc[shot_number, 'txwaveform']
+    tx_waveform_str = dataframe.loc[shot_number, 'txwaveform']
 
     tx_waveform_value = np.array(tx_waveform_str.split(',')).astype(np.float32)
 
-    rx_waveform_str = comparison_DataFrame.loc[shot_number, 'rxwaveform']
+    rx_waveform_str = dataframe.loc[shot_number, 'rxwaveform']
 
     rx_waveform_value = np.array(rx_waveform_str.split(',')).astype(np.float32)
 
-    process_fields = process_field_DataFrame.loc[shot_number, ['search_start', 'search_end', 'toploc',
+    process_fields = dataframe.loc[shot_number, ['search_start', 'search_end', 'toploc',
                                                                'botloc', 'zcross', 'zcross0', 'mean',
                                                                'selected_l2a_algorithm','beam','ALS_total_CC','GEDI_total_CC']].to_dict()
 
