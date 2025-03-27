@@ -32,7 +32,9 @@ The description of some columns may be helpful for my collaborators;
 
 "GEDI_lowestmode_height_NAVD": GEDI elevation reported in the North American Vertical Datum 1988 (NAVD88) used in NEON ALS points cloud.
 
-"DEM_NEON": the average of NEON ALS elevation within the GEDI footprint area;
+"DEM_NEON_average": the average of NEON ALS elevation from ground return points within the GEDI footprint area;
+
+"DEM_NEON_weighted": similar to DEM_NEON_average, while ALS ground points' elevation is weighed by 2d gaussian 
 
 "DHM_98_c": 98th percentile canopy height derived from ALS points cloud
 
