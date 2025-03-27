@@ -3,7 +3,7 @@ import initial_parameters
 import pandas as pd
 import GEDI_waveform_processing
 import os
-from gaussian_samples import file_path
+from files_access import file_path
 
 # generate training samples based on ALS elevation
 def trainsamples_by_ALS_elevation():
