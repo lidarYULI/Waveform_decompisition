@@ -1,0 +1,2 @@
+Back distance Cumulative integral Mode amplitude ma4 ma6 ma3 ma5 Front distance Mode location c85 ma2 Mode amplitude percentile loc3 c5 loc4 loc1 loc2 c65 ma1 c25 loc5 p25 loc6 p45 c45 p5 p85 p65 stddev Mode width
+0.2211 0.1328 0.0891 0.0555 0.0529 0.0507 0.0466 0.0356 0.0342 0.0292 0.0277 0.0237 0.0203 0.0196 0.0181 0.0161 0.0156 0.0152 0.0147 0.0139 0.0108 0.0101 0.0084 0.0082 0.0081 0.0071 0.0055 0.0041 0.0034 0.0016

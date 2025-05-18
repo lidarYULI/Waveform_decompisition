@@ -9,7 +9,7 @@ def initial_Gaussian_parameters(smoothed_waveform, inflation_x, derivation_x, no
 
     amplitudes, center_x, sigmas = [], [], []
     if points == 'inflection':
-        amplitudes, center_x, sigmas = initial_paras_inflection(inflation_x, smoothed_waveform)
+        amplitudes, center_x, sigmas = initial_paras_inflection(smoothed_waveform,inflation_x)
     if points == 'derivative':
         amplitudes, center_x, sigmas = initial_paras_derivative(derivation_x, inflation_x, tx_sigma, smoothed_waveform)
 
@@ -149,7 +149,7 @@ def filter_initial_parameter(initial_pandas,noise_std,lowest_sigma = 1):
     for index in initial_pandas.index.to_list():
         amplitude, center, sigma = initial_pandas.loc[index, ['amplitude','center','sigma']]
         # remove a mode with small amplitude or sigma | (sigma < 3*self.lowest_sigma)
-        if ((amplitude <= 3*noise_std) | (sigma < 3*lowest_sigma)):
+        if ((amplitude <= noise_std) | (sigma < lowest_sigma)):
             continue
         else:
             filter_initparameters.loc[i, :] = amplitude, center, sigma

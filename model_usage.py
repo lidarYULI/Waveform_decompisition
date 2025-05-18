@@ -44,6 +44,34 @@ def generate_bound(params):
     # tuple_bound = tuple([lp_bounds,up_bounds])
     return params_sort.flatten(), lp_bounds, up_bounds
 
+
+def generate_bound_simple(params):
+    # params: n*3
+    # sort by mode center
+    params_sort = params[np.argsort(params[:,1])]
+    # generate bound used in modeling
+    lp_bounds = []
+    up_bounds = []
+    for i in range(0, len(params_sort)):
+
+        amplitude, center, sigma = params_sort[i,0], params_sort[i,1], params_sort[i,2]
+        ## first mode
+        if i == 0:
+           left_center = center - 10
+           if left_center < 0:
+                left_center = 0
+        else:
+            left_center = params_sort[i - 1, 1] if center - params_sort[i - 1, 1] < 10 else center - 10
+        if i == len(params_sort) - 1:
+            right_center = center + 10
+        else:
+            right_center = params_sort[i + 1, 1] if params_sort[i + 1, 1] - center < 10 else center + 10
+        # the bound for sigma is also variable, paper recommend the smallest sigma is the sigma of transmitted waveform
+        lp_bounds = lp_bounds + [0, left_center, sigma]
+        up_bounds = up_bounds + [np.inf, right_center, sigma * 5]
+    # tuple_bound = tuple([lp_bounds,up_bounds])
+    return params_sort.flatten(), lp_bounds, up_bounds
+
 # arbitrary settings for GEDI waveform
 def generate_bound_GEDI(params):
     # generate bound used in modeling
@@ -122,13 +150,13 @@ def ground_fit_exgaussian(normalized_waveform,select_zcross,sigma,gamma):
     return fitted_parameters
 
 # fit ground return based on Gaussian function
-def ground_fit_Gau(self,normalized_waveform,select_zcross,sigma):
+def ground_fit_Gau(normalized_waveform,select_zcross,sigma):
 
     ground_amplitude = normalized_waveform[select_zcross]
     # below boundary setting is set by many times of trail;
-    lp_bounds = [ground_amplitude*0.9, select_zcross - 3, sigma * 0.5]
+    lp_bounds = [ground_amplitude * 0.8, select_zcross - 4, sigma*0.8]
 
-    up_bounds = [ground_amplitude*1.2, select_zcross + 3, sigma * 3]
+    up_bounds = [ground_amplitude * 2, select_zcross + 4, sigma * 3]
 
     # transect_wavefrm = normalized_waveform[fit_start:fit_end]
     #

@@ -1,0 +1,216 @@
+waveform_class: HARV number: 299 
+ R2: 0.9473660889303278 RMSE: 3.1274165972344425 
+ {'max_depth': 5, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 8, 'n_estimators': 58} 
+ -28.468481152578125
+waveform_class: RMNP number: 859 
+ R2: 0.9657146019263468 RMSE: 1.5042037695848638 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -15.100369603575228
+waveform_class: TALL number: 969 
+ R2: 0.9822333308332708 RMSE: 1.6909100635200685 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 3, 'n_estimators': 219} 
+ -11.265431284026201
+waveform_class: TREE number: 243 
+ R2: 0.9853977889712533 RMSE: 1.1589387370131121 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -9.46961995236255
+waveform_class: UNDE number: 1045 
+ R2: 0.9864422577608067 RMSE: 1.2564132149876517 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -13.631069105501478
+waveform_class: WREF number: 2710 
+ R2: 0.9745918758385415 RMSE: 2.744783599954073 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -26.891926826522507
+waveform_class: Broadleaf forest number: 913 
+ R2: 0.9801814556197284 RMSE: 1.8041495798559508 
+ {'max_depth': 10, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 6, 'n_estimators': 162} 
+ -17.73517884191548
+waveform_class: Mixed forest number: 573 
+ R2: 0.9813760156266162 RMSE: 1.6739007581080647 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -20.637389349195182
+waveform_class: Needleleaf forest number: 3664 
+ R2: 0.9709106512085449 RMSE: 2.7025741599449056 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -26.361780742792327
+waveform_class: non forest number: 978 
+ R2: 0.9787385942544345 RMSE: 1.697814688909372 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -18.965089863312805
+waveform_class: all number: 6127 
+ R2: 0.9844346373596038 RMSE: 1.8104587818960998 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -22.552011822466973
+waveform_class: HARV number: 298 
+ R2: 0.9760541283876477 RMSE: 2.0245223167796706 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -23.039836646236793
+waveform_class: RMNP number: 859 
+ R2: 0.906401838260528 RMSE: 2.456946032868311 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 2, 'min_samples_split': 10, 'n_estimators': 395} 
+ -16.285161008837918
+waveform_class: TALL number: 969 
+ R2: 0.9808850208085456 RMSE: 1.7369641655431154 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -11.672552042772935
+waveform_class: TREE number: 243 
+ R2: 0.9797130407670803 RMSE: 1.3777838489938745 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -10.744352915443223
+waveform_class: UNDE number: 1045 
+ R2: 0.9873102867262472 RMSE: 1.3260416240277486 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -15.364811731491576
+waveform_class: WREF number: 2712 
+ R2: 0.9773131788611286 RMSE: 2.561072053427643 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 2, 'min_samples_split': 9, 'n_estimators': 178} 
+ -23.863729935615332
+waveform_class: all number: 6126 
+ R2: 0.985496126659674 RMSE: 1.7542460429943574 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -21.088280625024886
+
+2025-04-16 23:26:16###################################
+waveform_class: GEDI_HARV number: 7775 
+ R2: 0.9981510545160643 RMSE: 0.5168923134184925 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -3.4537866614030053
+waveform_class: GEDI_RMNP number: 3329 
+ R2: 0.9968269475840397 RMSE: 0.3916785851886459 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -1.2832401216206415
+waveform_class: GEDI_TALL number: 2706 
+ R2: 0.9983288112843768 RMSE: 0.5027958227439815 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -1.3314970125435028
+waveform_class: GEDI_TREE number: 179 
+ R2: 0.9906225397911764 RMSE: 0.9912014594442728 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -5.456039068088688
+waveform_class: GEDI_UNDE number: 5329 
+ R2: 0.9970688275417521 RMSE: 0.5757144445086959 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -4.073623569872492
+waveform_class: GEDI_WREF number: 8662 
+ R2: 0.9977828666659262 RMSE: 0.7764678469626575 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -2.64600570402874
+2025-04-17 09:39:15###################################
+waveform_class: GEDI_all number: 17858 
+ R2: 0.9930994739826642 RMSE: 0.9009989739642194 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 6, 'min_samples_split': 9, 'n_estimators': 460} 
+ -2.005124143467449
+2025-04-17 21:13:19###################################
+2025-04-17 21:18:54###################################
+waveform_class: GEDI_all number: 17858 
+ R2: 0.9972050885140211 RMSE: 0.5734125934581173 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -2.4279480459385034
+2025-04-17 22:04:50###################################
+waveform_class: GEDI_HARV number: 8232 
+ R2: 0.9887721347692032 RMSE: 1.2277199134270234 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 8, 'min_samples_split': 5, 'n_estimators': 409} 
+ -2.520178108642769
+waveform_class: GEDI_RMNP number: 4594 
+ R2: 0.9951248649644184 RMSE: 0.48090863555369623 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -1.7795289872774904
+waveform_class: GEDI_TALL number: 2787 
+ R2: 0.9974834994033595 RMSE: 0.5871864942322849 
+ {'max_depth': 10, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 6, 'n_estimators': 162} 
+ -1.3323762741128578
+waveform_class: GEDI_TREE number: 218 
+ R2: 0.9889189431349147 RMSE: 1.0306180056218701 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -4.742524882253951
+waveform_class: GEDI_UNDE number: 2027 
+ R2: 0.9928622053895516 RMSE: 0.8640882024176367 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 4, 'min_samples_split': 4, 'n_estimators': 196} 
+ -2.1695378759155237
+2025-04-17 22:16:47###################################
+2025-04-19 10:43:59###################################
+waveform_class: GEDI_HARV number: 7775 
+ R2: 0.9981387232692769 RMSE: 0.5186131144250691 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -3.4214440725294417
+waveform_class: GEDI_RMNP number: 3329 
+ R2: 0.9952710340532346 RMSE: 0.4781611612760284 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -1.6202082212538707
+waveform_class: GEDI_TALL number: 2706 
+ R2: 0.9978278103402239 RMSE: 0.5732285131392238 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -1.4982235447290377
+waveform_class: GEDI_TREE number: 179 
+ R2: 0.9905467761841379 RMSE: 0.9951975267425563 
+ {'max_depth': 10, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 6, 'n_estimators': 162} 
+ -5.389521503960241
+waveform_class: GEDI_UNDE number: 5329 
+ R2: 0.9962482062414918 RMSE: 0.6513372535175007 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -4.143642412736569
+waveform_class: GEDI_WREF number: 8662 
+ R2: 0.9969366093314891 RMSE: 0.9127014980863711 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -3.0292286189877236
+2025-04-19 11:16:30###################################
+waveform_class: GEDI_all number: 27980 
+ R2: 0.9876709771358008 RMSE: 1.5043855627547047 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 8, 'min_samples_split': 5, 'n_estimators': 409} 
+ -4.1156021790325745
+2025-04-19 11:51:01###################################
+waveform_class: GEDI_all number: 39311 
+ R2: 0.9863052137610895 RMSE: 1.515496596553323 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 8, 'min_samples_split': 15, 'n_estimators': 264} 
+ -4.592397728669431
+2025-04-19 15:16:55###################################
+waveform_class: GEDI_all number: 39311 
+ R2: 0.988821261368429 RMSE: 1.3692215869599687 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 8, 'min_samples_split': 15, 'n_estimators': 264} 
+ -3.8428747842954865
+2025-04-19 15:59:05###################################
+waveform_class: GEDI_HARV number: 11393 
+ R2: 0.9980603123082437 RMSE: 0.5123688094772897 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -3.9052480449763545
+waveform_class: GEDI_RMNP number: 4594 
+ R2: 0.9967706420760716 RMSE: 0.3914058767381261 
+ {'max_depth': None, 'max_features': 'sqrt', 'min_samples_leaf': 1, 'min_samples_split': 3, 'n_estimators': 179} 
+ -1.39990338410065
+waveform_class: GEDI_TALL number: 5278 
+ R2: 0.9982670555001966 RMSE: 0.4864885988236296 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -1.0834193673396566
+waveform_class: GEDI_TREE number: 218 
+ R2: 0.99120018169858 RMSE: 0.9184256119476895 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -5.081804462273292
+waveform_class: GEDI_UNDE number: 7841 
+ R2: 0.9915533746149422 RMSE: 0.9521369470770007 
+ {'max_depth': None, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 2, 'n_estimators': 428} 
+ -4.475230489210889
+waveform_class: GEDI_WREF number: 9987 
+ R2: 0.9979494210061904 RMSE: 0.7420412625975018 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 3, 'min_samples_split': 3, 'n_estimators': 219} 
+ -2.348691482294118
+2025-04-19 19:46:49###################################
+waveform_class: GEDI_all number: 21169 
+ R2: 0.9916874959665788 RMSE: 1.155506451676574 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 4, 'min_samples_split': 4, 'n_estimators': 196} 
+ -4.197983917907562
+2025-04-19 20:13:37###################################
+waveform_class: GEDI_all number: 13374 
+ R2: 0.9914031328025311 RMSE: 1.2063413399359564 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 4, 'min_samples_split': 4, 'n_estimators': 196} 
+ -5.328809792396606
+2025-05-15 11:29:05###################################
+waveform_class: GEDI_Needleleaf_filter number: 11046 
+ R2: 0.9982889047736506 RMSE: 0.6077968900875075 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -2.3215228626354687
+2025-05-15 12:00:20###################################
+waveform_class: GEDI_Needleleaf_filter number: 11046 
+ R2: 0.9982889047736506 RMSE: 0.6077968900875075 
+ {'max_depth': 20, 'max_features': None, 'min_samples_leaf': 1, 'min_samples_split': 7, 'n_estimators': 329} 
+ -2.3215228626354687

@@ -1,10 +1,4 @@
 import numpy as np
-import pandas as pd
-from lmfit import Model
-from scipy.special import erfc
-from scipy.optimize import least_squares
-from scipy.optimize import curve_fit
-from scipy.signal import argrelextrema
 import smooth_filter
 # refer to Hofton and Blair., 2019, ATBD for GEDI waveform processing
 
@@ -63,3 +57,5 @@ def is_powerbeams_byname(beamName):
     if beamName in ['BEAM0101','BEAM0110','BEAM1000','BEAM1011']:
         return 1
 ###### unused function
+
+

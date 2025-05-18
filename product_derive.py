@@ -69,7 +69,7 @@ def cumulative_CC_gaussian_decom(parameters, waveform_length, toploc):
     return CC_list
 
 #directly fit the ground by the location of identified location and calculate CC
-def decompose_based_selected_zcross(excel,ground_zcross_field,is_gaussian = True):
+def decompose_based_selected_zcross(excel, ground_zcross_field, label = 'site', is_gaussian = True):
 
     dataframe = pd.read_excel(excel, dtype={'shot_number': str})
 
@@ -85,9 +85,9 @@ def decompose_based_selected_zcross(excel,ground_zcross_field,is_gaussian = True
 
         rx_waveform_value = np.array(rx_waveform_str.split(',')).astype(np.float32)
 
-        initial_waveform = GEDI_processing.rx_waveform_denoise(rx_waveform_value,search_start,search_end,2)
+        initial_waveform = GEDI_processing.rx_waveform_denoise(rx_waveform_value,search_start,search_end,4)
 
-        mean_noise = np.mean(np.concatenate([initial_waveform[0:search_start], initial_waveform[search_end:]]))
+        mean_noise = np.mean(np.concatenate([initial_waveform[0:200], initial_waveform[-200:]]))
 
         normalized_waveform = initial_waveform - mean_noise
 
@@ -120,12 +120,12 @@ def decompose_based_selected_zcross(excel,ground_zcross_field,is_gaussian = True
 
         # for Gaussian decomposition
         if is_gaussian:
-            dataframe.loc[i, ['RV_RF_z', 'CC_RF_z']] = rv_z_str, cc_z_str
-            dataframe.loc[i, 'Fitted_parameters_Rg_RF_GAU'] = parameters
+            dataframe.loc[i, [f'RV_RF_z_{label}', f'CC_RF_z_{label}']] = rv_z_str, cc_z_str
+            dataframe.loc[i, f'Fitted_parameters_Rg_RF_GAU_{label}'] = parameters
         else:
             # for extended Gaussian decomposition
-            dataframe.loc[i, ['RV_RF_z_ex', 'CC_RF_z_ex']] = rv_z_str, cc_z_str
-            dataframe.loc[i, 'Fitted_parameters_Rg_RF_GAU_ex'] = parameters
+            dataframe.loc[i, [f'RV_RF_z_ex_{label}', f'CC_RF_z_ex_{label}']] = rv_z_str, cc_z_str
+            dataframe.loc[i, f'Fitted_parameters_Rg_RF_GAU_ex_{label}'] = parameters
         #
         # WRD_manually_dataframe.loc[i, 'CC_WRD_ex'] = RV/ (RV + 1.5*RG)
 
@@ -152,6 +152,8 @@ def cumulative_CC_calculation(waveform, rg_fit_ppot, toploc, is_gaussian = True)
         RV_z = np.sum(canopy_waveform) - np.sum(overlap_waveform)
         Rv_list.append(RV_z)
         CC = RV_z / (RV + 1.5 * RG)
+        if CC < 0:
+            CC = 0
         CC_list.append(CC)
     return Rv_list, CC_list
 
@@ -177,4 +179,7 @@ def cumulative_CC_without_fit(waveform, Rg, rg_center, toploc):
 if __name__ == '__main__':
 
     RF_excel = file_path.RF_excel
-    decompose_based_selected_zcross(RF_excel,'randomforest_zcross')
+    # for site in ['HARV', 'RMNP', 'TALL', 'TREE', 'UNDE', 'WREF']:
+    #     zcoss_column = f'{site}_height_predict'
+
+    decompose_based_selected_zcross(RF_excel,'mode_zcross_first',label = 'first')

@@ -3,18 +3,14 @@ import numpy as np
 import gaussian_decomposition as GD_decom
 import GEDI_waveform_processing as GEDI_processing
 import matplotlib.pyplot as plt
-import model_usage
 import os
 import matplotlib
 matplotlib.use('TkAgg')
+from files_access import file_path
 
 def test_gaussia_decomposition():
 
-    current_file_path = os.path.abspath(__file__)
-
-    project_root = os.path.dirname(current_file_path)
-
-    test_excel = os.path.join(project_root,'test_data.xlsx')
+    test_excel = file_path.manual_sample_excel
 
     dataframe = pd.read_excel(test_excel, dtype={'shot_number': str}, index_col=0)
 
@@ -40,25 +36,12 @@ def test_gaussia_decomposition():
 
     lmfit_ax.plot(range(len(searching_waveform)), searching_waveform, c='gray', label='searching waveform',linewidth=0.5)
 
-    draw_Gaussian_fitted_modes(lmfit_ax, fitted_parameters, len(searching_waveform))
+    GD_decom.draw_Gaussian_fitted_modes(lmfit_ax, fitted_parameters, len(searching_waveform))
     ########
     lmfit_ax.axvline(waveform_parameters['zcross'] - waveform_parameters['search_start'], label='ground', c='red')
     lmfit_ax.legend()
     plt.show()
 
-def draw_Gaussian_fitted_modes(ax, fitted_parameters, length):
-    x = np.arange(length)
-    # plot Gaussian fit for ground
-    sum_y = 0
-    i = 0
-    for index in range(0, len(fitted_parameters), 3):
-        amplitude, center, sigma = fitted_parameters[index], fitted_parameters[index + 1], fitted_parameters[index + 2]
-        fit_y = model_usage.gaussian(x, amplitude, center, sigma)
-        sum_y = sum_y + fit_y
-        i = i + 1
-        ax.plot(x, fit_y, linestyle='--', label=f'Gaussian_mode_{i}')
-
-    ax.plot(x, sum_y, c='orange', label='fitted waveform', zorder=0)
 
 def GEDI_waveform_parameters(dataframe,shot_number):
 
@@ -81,19 +64,15 @@ def GEDI_waveform_parameters(dataframe,shot_number):
 
 def draw_rxwaveform():
 
-    current_file_path = os.path.abspath(__file__)
-
-    project_root = os.path.dirname(current_file_path)
-
-    test_excel = os.path.join(project_root,'test_data.xlsx')
+    test_excel = file_path.manual_sample_excel
 
     dataframe = pd.read_excel(test_excel, dtype={'shot_number': str}, index_col=0)
 
     shot_number = '79650300200248910'
 
-    wave_parameters = GEDI_waveform_parameters(dataframe, dataframe,shot_number)
+    wave_parameters = GEDI_waveform_parameters(dataframe,shot_number)
 
-    DEM, lowest_ele, zcross = dataframe.loc[shot_number, ['DEM_NEON', 'GEDI_lowestmode_height_NAVD', 'zcross']]
+    DEM, lowest_ele, zcross = dataframe.loc[shot_number, ['DEM_NEON_weighted', 'GEDI_lowestmode_height_NAVD', 'zcross']]
 
     DEM_cross = (lowest_ele - DEM) / 0.15 + zcross
 
